@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
-        return redirect()->name('site.admin');
+    public function index()
+    {
+        return redirect()->route('app.admin');
     }
 }
