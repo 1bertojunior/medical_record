@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function login(){
+    public function showLogin(){
         return view('app.auth.login', ['title' => 'Login']);
+    }
+
+    public function login(Request $request)
+    {
+               
     }
 }
