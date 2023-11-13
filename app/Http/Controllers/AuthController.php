@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     public function login(){
-        echo "Welcome to page login";
+        return view('app.auth.login', ['title' => 'Login']);
     }
 }
