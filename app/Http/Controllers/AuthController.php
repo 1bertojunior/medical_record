@@ -35,4 +35,16 @@ class AuthController extends Controller
             return redirect()->route('app.showLogin')->withErrors(['error' => 'E-mail ou senha inválidos']);
         }
     }
+
+    public function logout()
+    {
+        $logout = Auth::logout();
+
+        if($logout){
+            return redirect()->route('app.home');
+        }else{
+            return redirect()->route('app.admin');
+        }
+
+    }
 }
