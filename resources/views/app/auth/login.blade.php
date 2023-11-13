@@ -3,5 +3,14 @@
 @section('title', $title)
 
 @section('content')
-    teste
+    <div class="login-container">
+        <h1>Login do Funcionário (ADM/User)</h1>
+        <form class="login-form" action="processa_login.php" method="post">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+            <input type="submit" value="Login">
+        </form>
+    </div>
 @endsection
