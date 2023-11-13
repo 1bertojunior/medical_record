@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class AppController extends Controller
 {
     public function admin(){
-        echo "Welcome to Admin Page<br> <a href='/logout'>Logout</a>";
+        return view('app.admin', ['title' => 'Login']);
     }
 }
