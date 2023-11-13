@@ -1,6 +1,6 @@
 @extends('app.layouts.auth')
 
-@section('titulo', $titulo)
+@section('title', $title)
 
 @section('content')
     teste
