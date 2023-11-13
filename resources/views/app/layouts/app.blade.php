@@ -15,5 +15,9 @@
         @yield('content')
     </div>
 
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('fontawesome/js/all.min.js') }}"></script>
+    <script src="{{ asset('js/menu.js') }}"></script>
+
 </body>
 </html>
