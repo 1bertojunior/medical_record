@@ -30,7 +30,7 @@ class AuthController extends Controller
         $authenticated = Auth::attempt($credentials);
 
         if ( $authenticated ) {
-            return redirect()->intended('/admin');
+            return redirect()->route('app.admin');
         } else {
             return redirect()->route('app.showLogin')->withErrors(['error' => 'E-mail ou senha inválidos']);
         }
