@@ -17,6 +17,11 @@
             @error('password')
                 <span> {{$message }}</span>
             @enderror
+
+            @error('error')
+                <span> {{$message }}</span>
+            @enderror
+
             <input type="submit" value="Login">
         </form>
     </div>
