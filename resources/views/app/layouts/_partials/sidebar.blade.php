@@ -1,7 +1,7 @@
 <sidebar id="sidebar">
 
     <div class="sidebar-titulo">
-        <img src="https://static.wixstatic.com/media/95d866_1f1b690d66284a878b03e2e21acaa4cd~mv2.png/v1/fill/w_82,h_80,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/amigos-s%C3%ADmbolo_edited.png" alt="">
+        <img src="{{ asset('img/amigos-símbolo_white.png') }}" alt="">
         <h2>Amigos da Comunidade</h2>
     </div>
 
