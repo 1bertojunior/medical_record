@@ -8,6 +8,8 @@
 
 @include('app.layouts._partials.sidebar')
 
+@include('app.layouts._partials.main_content')
+
 
 
 @endsection
