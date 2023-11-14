@@ -1,1 +1,11 @@
-Welcome to page Admin of App
+@extends('app.layouts.app')
+
+@section('title', $title)
+
+@section('content')
+
+{{-- Welcome to page admin --}}
+
+
+
+@endsection
