@@ -6,6 +6,8 @@
 
 {{-- Welcome to page admin --}}
 
+@include('app.layouts._partials.sidebar')
+
 
 
 @endsection
