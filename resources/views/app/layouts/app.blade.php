@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <div class="container-test">
+    <div class="flex-dashboard">
         @yield('content')
     </div>
 

@@ -1,8 +1,1 @@
-@extends('app.layouts.app')
-
-@section('title', $title)
-
-@section('content')
-
-
-@endsection
+Welcome to page Admin of App
