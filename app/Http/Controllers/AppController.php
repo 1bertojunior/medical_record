@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AppController extends Controller
@@ -11,6 +12,9 @@ class AppController extends Controller
     }
 
     public function users(){
-        return view('app.users', ['title' => 'Usuários']);
+
+        $users = User::all();
+        
+        return view('app.users', ['title' => 'Usuários', 'users' => $users] );
     }
 }
