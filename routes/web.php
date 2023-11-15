@@ -13,4 +13,5 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('app.logout');
 
 Route::middleware('authentication')->prefix('/app')->group(function() {
     Route::get('/admin', [AppController::class, 'admin'])->name('app.admin');
+    Route::get('/users', [AppController::class, 'users'])->name('app.users');
 });
