@@ -18,8 +18,8 @@
             </li>
 
             <li>
-                <i class="fas fa-weight"></i>
-                <a href="{{ route('app.admin') }}">Função 1</a>
+                <i class="fa fa-users"></i>
+                <a href="{{ route('app.users') }}">Usuários</a>
             </li>
 
             <li>
