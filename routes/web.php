@@ -17,5 +17,5 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
     Route::get('/users', [AppController::class, 'users'])->name('app.users');
 
     Route::get('users/add', [UserController::class, 'add'])->name('app.user.add');
-
+    Route::post('users/add', [UserController::class, 'create'])->name('app.user.add');
 });
