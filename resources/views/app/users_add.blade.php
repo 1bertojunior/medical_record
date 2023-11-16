@@ -20,7 +20,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">Nome completo</label>
-                    <input type="text" class="form-control" id="nome" placeholder="Seu nome completo">
+                    <input type="text" name="name" class="form-control" id="nome" placeholder="Seu nome completo">
                 </div>
 
                 {{-- <div class="form-group">
@@ -34,12 +34,12 @@
 
                 <div class="form-group">
                     <label for="email">Endereço de email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Seu email">
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Seu email">
                 </div>
 
                 <div class="form-group">
                     <label for="password">Senha</label>
-                    <input type="password" class="form-control" id="senha" placeholder="Senha">
+                    <input type="password" name="password" class="form-control" id="senha" placeholder="Senha">
                 </div>
                 <button type="submit" class="btn">Cadastrar</button>
             </form>
