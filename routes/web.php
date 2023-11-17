@@ -18,5 +18,6 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
 
     Route::get('users/add', [UserController::class, 'add'])->name('app.users.add');
     Route::post('users/add', [UserController::class, 'create'])->name('app.users.add');
-    Route::post('users/edit/{id}', [UserController::class, 'edit'])->name('app.users.edit');
+    Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('app.users.edit');
+    Route::put('users/edit/{id}', [UserController::class, 'update'])->name('app.users.edit');
 });

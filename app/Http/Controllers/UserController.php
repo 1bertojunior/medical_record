@@ -43,4 +43,23 @@ class UserController extends Controller
         }
         
     }
+
+    public function edit($id){
+        $user = User::findOrFail($id);
+
+        return view('app.user_edit', ['title' => 'Editando Usuário', 'user' => $user]);
+    }
+
+    public function update(Request $request){
+
+        $user = User::findOrFail($request->id);
+        $result = $user->update($request->all());
+
+        if($result){
+            echo "OK";
+        }else{
+            echo "Error";
+        }
+    }
+
 }
