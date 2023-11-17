@@ -14,8 +14,10 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('app.logout');
 
 Route::middleware('authentication')->prefix('/app')->group(function() {
     Route::get('/admin', [AppController::class, 'admin'])->name('app.admin');
-    Route::get('/users', [AppController::class, 'users'])->name('app.users');
+    
+    Route::get('/profile', [UserController::class, 'profile'])->name('app.profile');
 
+    Route::get('/users', [AppController::class, 'users'])->name('app.users');
     Route::get('users/add', [UserController::class, 'add'])->name('app.users.add');
     Route::post('users/add', [UserController::class, 'create'])->name('app.users.add');
     Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('app.users.edit');
