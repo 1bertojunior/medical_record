@@ -21,7 +21,7 @@
             </div>
 
             <div class="col-6 d-flex justify-content-end">
-                <a href="{{ route('app.users.add') }}"> <i class="fas fa-sign-out-alt"></i>
+                <a href="{{ route('app.users.add') }}"> <i class="fas fa-plus"></i>
                     Adicionar
                 </a>
               </div>
