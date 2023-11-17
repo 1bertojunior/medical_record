@@ -50,7 +50,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
                         <th scope="col">E-mail</th>
-                        <th scope="col">Função</th>
+                        <th scope="col">Ações</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -59,7 +59,10 @@
                                 <th scope="row">{{ $user->id }}</th>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>Admin</td>
+                                <td>
+                                    <a href="{{ route('app.users.edit', ['id' => $user->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
