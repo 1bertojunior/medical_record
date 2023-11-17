@@ -26,6 +26,19 @@
                 </a>
               </div>
         </div>
+        
+        @success
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endsuccess
+
+        @error('error')
+            <div class="alert alert-danger">
+                {{$message }}
+            </div>
+        @enderror
+
 
         <div class="dashboard-conteudo">
             <div class="dashboard-flex">
