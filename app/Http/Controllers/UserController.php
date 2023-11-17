@@ -56,9 +56,9 @@ class UserController extends Controller
         $result = $user->update($request->all());
 
         if($result){
-            echo "OK";
+            return redirect()->route('app.users')->with('success', 'Usuário editado com sucesso!');
         }else{
-            echo "Error";
+            return redirect()->route('app.users')->withErrors(['error' => 'Error ao editar usuário, tente novamente mais tarde!']);
         }
     }
 
