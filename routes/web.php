@@ -16,6 +16,6 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
     Route::get('/admin', [AppController::class, 'admin'])->name('app.admin');
     Route::get('/users', [AppController::class, 'users'])->name('app.users');
 
-    Route::get('users/add', [UserController::class, 'add'])->name('app.user.add');
-    Route::post('users/add', [UserController::class, 'create'])->name('app.user.add');
+    Route::get('users/add', [UserController::class, 'add'])->name('app.users.add');
+    Route::post('users/add', [UserController::class, 'create'])->name('app.users.add');
 });
