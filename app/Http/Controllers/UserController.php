@@ -37,9 +37,9 @@ class UserController extends Controller
         $result = $user->save();
 
         if( $result ){
-            return redirect()->route('app.users');
+            return redirect()->route('app.users')->with('success', 'Usuário criado com sucesso!');;
         }else{
-            return redirect()->route('app.showLogin')->withErrors(['error' => 'Error ao criar usuário, tente novamente!']);
+            return redirect()->route('app.users')->withErrors(['error' => 'Error ao criar usuário, tente novamente!']);
         }
         
     }
