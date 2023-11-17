@@ -16,7 +16,7 @@
         </div>
 
         <div class="dashboard-conteudo">
-            <form method="post" action="{{ route('app.user.add') }}">
+            <form method="post" action="{{ route('app.users.add') }}">
                 @csrf
                 <div class="form-group">
                     <label for="name">Nome completo</label>
