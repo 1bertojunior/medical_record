@@ -13,13 +13,34 @@ class UserController extends Controller
     }
 
     public function create(Request $request){
+
+        $request->validate(
+            [
+                'name' => 'required|min:5',
+                'email' => 'required|email',
+                'password' => 'required|min:6',
+            ],
+            [
+                'name.required' => 'O campo de nome é obrigatório.',
+                'name.min' => 'O campo nome deve ter no mínimo :min caracteres.',
+                'email.required' => 'O campo de e-mail é obrigatório.',
+                'email.email' => 'O formato do e-mail é inválido.',
+                'password.required' => 'O campo de senha é obrigatório.',
+                'password.min' => 'A senha deve ter no mínimo :min caracteres.',
+            ]);  
+
         $user = new User();
         $user->email = $request->email;
         $user->name = $request->name;
         $user->password = Hash::make($request->password);
 
-        $user->save();
+        $result = $user->save();
 
-        return redirect()->route('app.users');
+        if( $result ){
+            return redirect()->route('app.users');
+        }else{
+            return redirect()->route('app.showLogin')->withErrors(['error' => 'Error ao criar usuário, tente novamente!']);
+        }
+        
     }
 }
