@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
 {
@@ -16,5 +17,13 @@ class AppController extends Controller
         $users = User::all();
         
         return view('app.users', ['title' => 'Usuários', 'users' => $users] );
+    }
+
+
+    public function profile(){
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+
+        return view('app.profile', ['title' => 'Perfil', 'user' => $user]);
     }
 }
