@@ -14,7 +14,7 @@
 
             <li class="{{ request()->routeIs('app.profile') ? 'selecionado' : '' }}">
                 <i class="fas fa-user"></i>
-                <a href="{{ route('app.admin') }}">Perfil</a>
+                <a href="{{ route('app.profile') }}">Perfil</a>
             </li>
 
             <li class="{{ request()->routeIs(['app.users', 'app.users.add', 'app.users.edit']) ? 'selecionado' : '' }}">
