@@ -7,17 +7,17 @@
 
     <div class="menu">
         <ul>
-            <li class="selecionado">
+            <li class="{{ request()->routeIs('app.admin') ? 'selecionado' : '' }}">
                 <i class="fas fa-home"></i>
                 <a href="{{ route('app.admin') }}">Dashboard</a>
             </li>
 
-            <li>
+            <li class="{{ request()->routeIs('app.profile') ? 'selecionado' : '' }}">
                 <i class="fas fa-user"></i>
                 <a href="{{ route('app.admin') }}">Perfil</a>
             </li>
 
-            <li>
+            <li class="{{ request()->routeIs(['app.users', 'app.users.add', 'app.users.edit']) ? 'selecionado' : '' }}">
                 <i class="fa fa-users"></i>
                 <a href="{{ route('app.users') }}">Usuários</a>
             </li>
