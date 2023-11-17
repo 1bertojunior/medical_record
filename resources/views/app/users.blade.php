@@ -11,8 +11,20 @@
     @include('app.layouts._partials.header')
 
     <div class="main-conteudo">
-        <div class="conteudo-titulo-main">
-            <h2>{{ $title }}</h2>
+       
+
+        <div class="row">
+            <div class="col-6">
+                <div class="conteudo-titulo-main">
+                    <h2>{{ $title }}</h2>
+                </div>
+            </div>
+
+            <div class="col-6 d-flex justify-content-end">
+                <a href="{{ route('app.users.add') }}"> <i class="fas fa-sign-out-alt"></i>
+                    Adicionar
+                </a>
+              </div>
         </div>
 
         <div class="dashboard-conteudo">
