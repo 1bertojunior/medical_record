@@ -49,22 +49,30 @@
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">E-mail</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">SUS</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Data de nascimento</th>
+                        <th scope="col">Anotações</th>
                         <th scope="col">Ações</th>
                       </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach($patients as $patient)
+                        @foreach($patients as $patient)
                             <tr>
-                                <th scope="row">{{ $user->id }}</th>
+                                <th scope="row">{{ $patient->id }}</th>
                                 <td>{{ $patient->name }}</td>
-                                <td>{{ $patient->email }}</td>
+                                <td>{{ $patient->cpf }}</td>
+                                <td>{{ $patient->sus_card }}</td>
+                                <td>{{ $patient->phone }}</td>
+                                <td>{{ $patient->birth_date }}</td>
+                                <td>{{ $patient->notes }}</td>
                                 <td>
                                     <a href="{{ route('app.users.edit', ['id' => $patient->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                     <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
                 </div>
