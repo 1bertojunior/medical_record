@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,7 @@ class AppController extends Controller
     }
 
     public function patient(){
-        return view('app.patient', ['title' => 'Pacientes']);
+        $patients = Patient::all();
+        return view('app.patient', ['title' => 'Pacientes', 'patients' => $patients]);
     }
 }
