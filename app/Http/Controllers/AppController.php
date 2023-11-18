@@ -26,4 +26,8 @@ class AppController extends Controller
 
         return view('app.profile', ['title' => 'Perfil', 'user' => $user]);
     }
+
+    public function patient(){
+        return view('app.patient', ['title' => 'Pacientes']);
+    }
 }
