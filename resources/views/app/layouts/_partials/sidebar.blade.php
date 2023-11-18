@@ -22,7 +22,7 @@
                 <a href="{{ route('app.users') }}">Usuários</a>
             </li>
 
-            <li>
+            <li class="{{ request()->routeIs(['app.patient', 'app.patient.add', 'app.patient.edit']) ? 'selecionado' : '' }}">>
                 {{-- <i class="fas fa-heartbeat"></i> --}}
                 <i class="fas fa-procedures"></i>
                 <a href="{{ route('app.patient') }}">Pacientes</a>
