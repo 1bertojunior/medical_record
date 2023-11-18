@@ -23,8 +23,9 @@
             </li>
 
             <li>
-                <i class="fas fa-heartbeat"></i>
-                <a href="{{ route('app.admin') }}">Função 2</a>
+                {{-- <i class="fas fa-heartbeat"></i> --}}
+                <i class="fas fa-procedures"></i>
+                <a href="{{ route('app.patient') }}">Pacientes</a>
             </li>
 
             <li>
