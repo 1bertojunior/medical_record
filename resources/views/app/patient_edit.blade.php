@@ -64,7 +64,7 @@
             
                 <div class="form-group">
                     <label for="notes">Anotações</label>
-                    <textarea name="notes" class="form-control" id="notes" placeholder="Suas anotações">{{ $patient->birth_notesdate }}</textarea>
+                    <textarea name="notes" class="form-control" id="notes" placeholder="Suas anotações">{{ $patient->notes }}</textarea>
                     @error('notes')
                         <span> {{$message }}</span>
                     @enderror
