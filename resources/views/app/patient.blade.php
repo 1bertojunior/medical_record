@@ -21,7 +21,7 @@
             </div>
 
             <div class="col-6 d-flex justify-content-end">
-                <a href="{{ route('app.users.add') }}"> <i class="fas fa-plus"></i>
+                <a href="{{ route('app.patient.add') }}"> <i class="fas fa-plus"></i>
                     Adicionar
                 </a>
               </div>
@@ -42,7 +42,6 @@
 
         <div class="dashboard-conteudo">
             <div class="dashboard-flex">
-                {{-- Welcome to the users page --}}
                 <div class="table-responsive">
                 <table class="table table-hover ">
                     <thead class="thead-light">
@@ -68,7 +67,7 @@
                                 <td>{{ $patient->birth_date }}</td>
                                 <td>{{ $patient->notes }}</td>
                                 <td>
-                                    <a href="{{ route('app.users.edit', ['id' => $patient->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('app.patient.edit', ['id' => $patient->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                     <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
