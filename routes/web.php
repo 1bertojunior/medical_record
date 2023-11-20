@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,6 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
     Route::get('/patient', [AppController::class, 'patient'])->name('app.patient');
     Route::get('/patient/add', [PatientController::class, 'create'])->name('app.patient.add');
     Route::post('/patient/add', [PatientController::class, 'store'])->name('app.patient.add');
-    Route::get('/patient/edit/{id}', [PatientController::class, 'edit'])->name('app.patient.add');
-    Route::put('/patient/edit/{id}', [PatientController::class, 'update'])->name('app.patient.add');
+    Route::get('/patient/edit/{id}', [PatientController::class, 'edit'])->name('app.patient.edit');
+    Route::put('/patient/edit/{id}', [PatientController::class, 'update'])->name('app.patient.edit');
 });
