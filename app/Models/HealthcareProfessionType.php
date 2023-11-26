@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class HealthcareProfessionType extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'council_type'];
+
+    public function professionals()
+    {
+        return $this->hasMany(HealthcareProfessional::class);
+    }
 }
