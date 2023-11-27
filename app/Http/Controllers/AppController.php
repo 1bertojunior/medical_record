@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HealthcareProfessionType;
 use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,7 +21,6 @@ class AppController extends Controller
         return view('app.users', ['title' => 'Usuários', 'users' => $users] );
     }
 
-
     public function profile(){
         $userId = Auth::id();
         $user = User::findOrFail($userId);
@@ -32,4 +32,10 @@ class AppController extends Controller
         $patients = Patient::all();
         return view('app.patient', ['title' => 'Pacientes', 'patients' => $patients]);
     }
+
+    public function healthcareProfessionType() {
+        $types = HealthcareProfessionType::all();
+        return view('app.healthcare_profession_type', ['title' => 'Tipos de profissionais', 'types' => $types]);
+    }
+
 }
