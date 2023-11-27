@@ -28,7 +28,7 @@
                 <a href="{{ route('app.patient') }}">Pacientes</a>
             </li>
 
-            <li>
+            <li class="{{ request()->routeIs(['app.healthcare_profession_type', 'app.healthcare_profession_type.add', 'app.healthcare_profession_type.edit']) ? 'selecionado' : '' }}">
                 <i class="fas fa-stethoscope"></i>
                 <a href="{{ route('app.healthcare_profession_type') }}">Tipos de Profissionais</a>
             </li>
