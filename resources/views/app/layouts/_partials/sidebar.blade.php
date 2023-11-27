@@ -29,17 +29,17 @@
             </li>
 
             <li>
-                <i class="fas fa-snowboarding"></i>
-                <a href="{{ route('app.admin') }}">Função 3</a>
+                <i class="fas fa-stethoscope"></i>
+                <a href="{{ route('app.admin') }}">Tipos de Profissionais</a>
             </li>
 
             <li>
-                <i class="fas fa-utensils"></i>
-                <a href="{{ route('app.admin') }}">Função 4</a>
+                <i class="fas fa-user-md"></i>
+                <a href="{{ route('app.admin') }}">Profissionais</a>
             </li>
             <li>
-                <i class="fas fa-calculator"></i>
-                <a href="{{ route('app.admin') }}">Funçao 4</a>
+                <i class="fas fa-notes-medical"></i>
+                <a href="{{ route('app.admin') }}">Prontuários</a>
             </li>
         </ul>
     </div>
