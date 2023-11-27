@@ -30,7 +30,7 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
     Route::get('/patient/edit/{id}', [PatientController::class, 'edit'])->name('app.patient.edit');
     Route::put('/patient/edit/{id}', [PatientController::class, 'update'])->name('app.patient.edit');
 
-    Route::get('/healthcare_profession_type', [AppController::class, 'patient'])->name('app.healthcare_profession_type');
+    Route::get('/healthcare_profession_type', [AppController::class, 'healthcareProfessionType'])->name('app.healthcare_profession_type');
     Route::get('/healthcare_profession_type/add', [HealthcareProfessionTypeController::class, 'create'])->name('app.healthcare_profession_type.add');
     Route::post('/healthcare_profession_type/add', [HealthcareProfessionTypeController::class, 'store'])->name('app.healthcare_profession_type.add');
     Route::get('/healthcare_profession_type/edit/{id}', [HealthcareProfessionTypeController::class, 'edit'])->name('app.healthcare_profession_type.edit');
