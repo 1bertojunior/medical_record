@@ -30,7 +30,7 @@
 
             <li>
                 <i class="fas fa-stethoscope"></i>
-                <a href="{{ route('app.admin') }}">Tipos de Profissionais</a>
+                <a href="{{ route('app.healthcare_profession_type') }}">Tipos de Profissionais</a>
             </li>
 
             <li>
