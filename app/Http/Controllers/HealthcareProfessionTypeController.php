@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HealthcareProfessionTypeController extends Controller
 {
     public function create(){
-        return view('app.healthcare_profession_type', ['title' => 'Adiconar Tipo de Profissional']);
+        return view('app.healthcare_profession_type_add', ['title' => 'Adiconar Tipo de Profissional']);
     }
 
     public function store(Request $request){
@@ -45,7 +45,7 @@ class HealthcareProfessionTypeController extends Controller
 
     public function edit($id){
         $type = HealthcareProfessionType::findOrFail($id);
-        return view('app.healthcare_profession_type_edit', ['title' => 'Editando Tipo de Profissional', 'patient' => $type]);
+        return view('app.healthcare_profession_type_edit', ['title' => 'Editando Tipo de Profissional', 'type' => $type]);
     }
 
     public function update(Request $request){
