@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HealthcareProfessional;
 use App\Models\HealthcareProfessionType;
 use App\Models\Patient;
 use App\Models\User;
@@ -36,6 +37,11 @@ class AppController extends Controller
     public function healthcareProfessionType() {
         $types = HealthcareProfessionType::all();
         return view('app.healthcare_profession_type', ['title' => 'Tipos de profissionais', 'types' => $types]);
+    }
+
+    public function healthcareProfessionals(){ 
+        $professionals =  HealthcareProfessional::all();
+        return view('app.professional', ['title' => 'Profissionais', 'professionals' => $professionals]);
     }
 
 }
