@@ -44,4 +44,8 @@ class AppController extends Controller
         return view('app.professional', ['title' => 'Profissionais', 'professionals' => $professionals]);
     }
 
+    public function medical_records(){ 
+        
+    }
+
 }
