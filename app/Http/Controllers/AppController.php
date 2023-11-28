@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HealthcareProfessional;
 use App\Models\HealthcareProfessionType;
+use App\Models\MedicalRecord;
 use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -44,8 +45,10 @@ class AppController extends Controller
         return view('app.professional', ['title' => 'Profissionais', 'professionals' => $professionals]);
     }
 
-    public function medical_records(){ 
-        
+    public function medicalRecords()
+    {
+        $medicalRecords = MedicalRecord::all();
+        return view('app.medical_records', ['title' => 'Prontuários Médicos', 'medicalRecords' => $medicalRecords]);
     }
 
 }
