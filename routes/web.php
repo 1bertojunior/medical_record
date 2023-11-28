@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HealthcareProfessionalController;
 use App\Http\Controllers\HealthcareProfessionTypeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MedicalRecordController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,12 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
     Route::put('/healthcare_professionals/edit/{id}', [HealthcareProfessionalController::class, 'update'])->name('app.healthcare_professionals.edit');
     Route::delete('/healthcare_professionals/delete/{id}', [HealthcareProfessionalController::class, 'destroy'])->name('app.healthcare_professionals.delete');
 
-
+    // Rotas de Prontuários
+    Route::get('/medical-records', [AppController::class, 'medical_records'])->name('medical_records.index');
+    Route::get('/medical-records/add', [MedicalRecordController::class, 'create'])->name('medical_records.add');
+    Route::post('/medical-records/add', [MedicalRecordController::class, 'store'])->name('medical_records.add');
+    Route::get('/medical-records/edit/{id}', [MedicalRecordController::class, 'edit'])->name('medical_records.edit');
+    Route::put('/medical-records/edit/{id}', [MedicalRecordController::class, 'update'])->name('medical_records.edit');
+    Route::delete('/medical-records/delete/{id}', [MedicalRecordController::class, 'destroy'])->name('medical_records.delete');
 
 });
