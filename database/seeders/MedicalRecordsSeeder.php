@@ -2,12 +2,15 @@
 
 namespace Database\Seeders;
 
+use App\Models\HealthcareProfessional;
+use App\Models\MedicalRecord;
+use App\Models\Patient;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
 
-class PatientsTableSeeder extends Seeder
+class MedicalRecordsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +19,7 @@ class PatientsTableSeeder extends Seeder
      */
     public function run()
     {
+      
         $faker = Faker::create();
 
         $patients = \App\Models\Patient::all();
@@ -41,5 +45,6 @@ class PatientsTableSeeder extends Seeder
                 ]);
             }
         }
+
     }
 }
