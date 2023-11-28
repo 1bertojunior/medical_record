@@ -33,9 +33,9 @@
                 <a href="{{ route('app.healthcare_profession_type') }}">Tipos de Profissionais</a>
             </li>
 
-            <li>
+            <li class="{{ request()->routeIs(['app.healthcare_professionals', 'app.healthcare_professionals.add', 'app.healthcare_professionals.edit']) ? 'selecionado' : '' }}">
                 <i class="fas fa-user-md"></i>
-                <a href="{{ route('app.admin') }}">Profissionais</a>
+                <a href="{{ route('app.healthcare_professionals') }}">Profissionais</a>
             </li>
             <li>
                 <i class="fas fa-notes-medical"></i>
