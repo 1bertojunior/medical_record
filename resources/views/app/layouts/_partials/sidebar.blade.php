@@ -37,9 +37,9 @@
                 <i class="fas fa-user-md"></i>
                 <a href="{{ route('app.healthcare_professionals') }}">Profissionais</a>
             </li>
-            <li>
+            <li class="{{ request()->routeIs(['app.medical_records', 'app.medical_records.add', 'app.medical_records.edit']) ? 'selecionado' : '' }}"> 
                 <i class="fas fa-notes-medical"></i>
-                <a href="{{ route('app.admin') }}">Prontuários</a>
+                <a href="{{ route('app.medical_records') }}">Prontuários</a>
             </li>
         </ul>
     </div>
