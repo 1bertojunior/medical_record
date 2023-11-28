@@ -37,5 +37,14 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
     Route::get('/healthcare_profession_type/edit/{id}', [HealthcareProfessionTypeController::class, 'edit'])->name('app.healthcare_profession_type.edit');
     Route::put('/healthcare_profession_type/edit/{id}', [HealthcareProfessionTypeController::class, 'update'])->name('app.healthcare_profession_type.edit');
 
+    // Rotas para Profissionais de Saúde
+    Route::get('/healthcare_professionals', [AppController::class, 'healthcareProfessionals'])->name('app.healthcare_professionals');
+    Route::get('/healthcare_professionals/add', [HealthcareProfessionalController::class, 'create'])->name('app.healthcare_professionals.add');
+    Route::post('/healthcare_professionals/add', [HealthcareProfessionalController::class, 'store'])->name('app.healthcare_professionals.add');
+    Route::get('/healthcare_professionals/edit/{id}', [HealthcareProfessionalController::class, 'edit'])->name('app.healthcare_professionals.edit');
+    Route::put('/healthcare_professionals/edit/{id}', [HealthcareProfessionalController::class, 'update'])->name('app.healthcare_professionals.edit');
+    Route::delete('/healthcare_professionals/delete/{id}', [HealthcareProfessionalController::class, 'destroy'])->name('app.healthcare_professionals.delete');
+
+
 
 });
