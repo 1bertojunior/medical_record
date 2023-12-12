@@ -22,7 +22,6 @@ class HealthcareProfessionTypesTableSeeder extends Seeder
             ['name' => 'Assistente Social', 'council_type' => 'CRESS'],
             ['name' => 'Radiologista', 'council_type' => 'CRTR'],
             ['name' => 'Bioquímico(a)', 'council_type' => 'CRBio'],
-            ['name' => 'Cirurgião Dentista', 'council_type' => 'CRO'],
             ['name' => 'Fonoaudiólogo(a)', 'council_type' => 'CREFONO'],
             ['name' => 'Médico Veterinário', 'council_type' => 'CRMV'],
             ['name' => 'Optometrista', 'council_type' => 'CON'],
