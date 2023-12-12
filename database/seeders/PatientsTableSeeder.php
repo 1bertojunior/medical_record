@@ -24,7 +24,7 @@ class PatientsTableSeeder extends Seeder
                 'birth_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
                 'cpf' => $faker->unique()->numerify('###########'),
                 'phone' => $faker->phoneNumber,
-                'sus_card' => $faker->numerify('######## #### #### ####'),
+                'sus_card' => $faker->numerify('###############'),
                 'notes' => $faker->text($maxNbChars = 200),
                 'created_at' => now(),
                 'updated_at' => now(),
