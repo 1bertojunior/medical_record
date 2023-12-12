@@ -18,28 +18,17 @@ class PatientsTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        $patients = \App\Models\Patient::all();
-        $professionals = \App\Models\HealthcareProfessional::all();
-
-        foreach ($patients as $patient) {
-            foreach ($professionals as $professional) {
-                DB::table('medical_records')->insert([
-                    'patient_id' => $patient->id,
-                    'healthcare_professional_id' => $professional->id,
-                    'image_path' => $faker->imageUrl(), // Exemplo de URL de imagem, ajuste conforme necessário
-                    'chief_complaint' => $faker->sentence,
-                    'history_of_present_illness' => $faker->paragraph,
-                    'past_medical_history' => $faker->paragraph,
-                    'family_history' => $faker->paragraph,
-                    'physical_examination' => $faker->paragraph,
-                    'diagnosis' => $faker->sentence,
-                    'treatment_plan' => $faker->paragraph,
-                    'medications' => $faker->sentence,
-                    'follow_up_instructions' => $faker->paragraph,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-            }
+        foreach (range(1,10) as $index) {
+            DB::table('patients')->insert([
+                'name' => $faker->name,
+                'birth_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'cpf' => $faker->unique()->numerify('###########'),
+                'phone' => $faker->phoneNumber,
+                'sus_card' => $faker->numerify('######## #### #### ####'),
+                'notes' => $faker->text($maxNbChars = 200),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
         }
     }
 }
