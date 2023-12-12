@@ -45,11 +45,11 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nome do Paciente</th>
-                                <th scope="col">Profissional de Saúde</th>
-                                <th scope="col">Queixa Principal</th>
-                                <th scope="col">História da Doença Atual</th>
-                                <!-- Adicione outros cabeçalhos conforme necessário -->
+                                <th scope="col">Nome</th>
+                                <th scope="col">Profissional</th>
+                                <th scope="col">Queixa</th>
+                                <th scope="col">Histórico</th>
+                                <th scope="col">Diagnóstico</th>
                                 <th scope="col">Ações</th>
                             </tr>
                         </thead>
@@ -59,11 +59,13 @@
                                     <th scope="row">{{ $record->id }}</th>
                                     <td>{{ $record->patient->name }}</td>
                                     <td>{{ $record->healthcareProfessional->name }}</td>
-                                    <td>{{ $record->chief_complaint }}</td>
-                                    <td>{{ $record->history_of_present_illness }}</td>
+                                    <td>{{ substr($record->complaints, 0, 50) }}</td>
+                                    <td>{{ substr($record->disease_history, 0, 50) }}</td>
+                                    <td>{{ substr($record->diagnosis, 0, 50) }}</td>
                                     <td>
+                                        <a href="#modal" class="btn btn-info"><i class="fas fa-eye"></i></a>
                                         <a href="{{ route('app.medical_records.edit', ['id' => $record->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="#delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>                                        
                                     </td>
                                 </tr>
                             @endforeach
@@ -76,5 +78,6 @@
     </div>
 
 </main>
+
 
 @endsection
