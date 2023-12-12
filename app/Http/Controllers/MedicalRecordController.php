@@ -60,7 +60,7 @@ class MedicalRecordController extends Controller
     {
         $medicalRecord = MedicalRecord::findOrFail($id);
 
-        return view('app.medical_record_edit', [
+        return view('app.medical_records_edit', [
             'title' => 'Editando Prontuário Médico',
             'medicalRecord' => $medicalRecord,
         ]);
