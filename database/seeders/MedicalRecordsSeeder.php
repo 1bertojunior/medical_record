@@ -30,21 +30,18 @@ class MedicalRecordsSeeder extends Seeder
                 DB::table('medical_records')->insert([
                     'patient_id' => $patient->id,
                     'healthcare_professional_id' => $professional->id,
-                    'image_path' => $faker->imageUrl(), // Exemplo de URL de imagem, ajuste conforme necessário
-                    'chief_complaint' => $faker->sentence,
-                    'history_of_present_illness' => $faker->paragraph,
-                    'past_medical_history' => $faker->paragraph,
-                    'family_history' => $faker->paragraph,
-                    'physical_examination' => $faker->paragraph,
-                    'diagnosis' => $faker->sentence,
-                    'treatment_plan' => $faker->paragraph,
-                    'medications' => $faker->sentence,
-                    'follow_up_instructions' => $faker->paragraph,
+                    'file_path' => $faker->imageUrl(), // Exemplo de URL de image
+                    'complaints' => $faker->sentence, // Queixa doença
+                    'disease_history' => $faker->paragraph, // Histórico de doenças
+                    'allergies' => $faker->sentence, // Alergias
+                    'diagnosis' => $faker->sentence, // Diagnóstico
+                    'follow_up_instructions' => $faker->paragraph, // Instruções de acompanhamento
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);
             }
         }
+        
 
     }
 }
