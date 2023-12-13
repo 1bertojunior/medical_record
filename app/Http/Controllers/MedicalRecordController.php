@@ -21,40 +21,90 @@ class MedicalRecordController extends Controller
         ]);
     }
 
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'patient_id' => 'required|exists:patients,id',
+    //         'healthcare_professional_id' => 'required|exists:healthcare_professionals,id',
+    //         'file_path' => 'required|string',
+    //         'complaints' => 'nullable|string',
+    //         'disease_history' => 'nullable|string',
+    //         'allergies' => 'nullable|string',
+    //         'diagnosis' => 'nullable|string',
+    //         'follow_up_instructions' => 'nullable|string',
+    //     ]);
+    
+    //     // Lógica para armazenar o prontuário médico no banco de dados
+    //     $medicalRecord = new MedicalRecord();
+    //     $medicalRecord->patient_id = $request->patient_id;
+    //     $medicalRecord->healthcare_professional_id = $request->healthcare_professional_id;
+    //     // $medicalRecord->file_path = $request->file_path;
+    //     $medicalRecord->complaints = $request->complaints;
+    //     $medicalRecord->disease_history = $request->disease_history;
+    //     $medicalRecord->allergies = $request->allergies;
+    //     $medicalRecord->diagnosis = $request->diagnosis;
+    //     $medicalRecord->follow_up_instructions = $request->follow_up_instructions;
+        
+    //     if( $request->hasFile('file_path') && $request->file('file_path')->isFile() ){
+    //         $requestImg = $request->file_path;
+    //         $extension = $requestImg->extension();
+    //         $imageName = md5( $requestImg->image->getClientOriginalNae() . strtotime("Now") . "." . $extension ); 
+
+    //         $requestImg->move( public_path('img/medical_records'), $imageName );
+    //         $medicalRecord->file_path = $imageName;
+    //     }
+
+    //     $result = $medicalRecord->save();
+
+    //     // $medicalRecord->file_path->store('imagens');
+    //     // echo $request->file_path;
+    
+    //     // if ($medicalRecord->save()) {
+    //     //     return redirect()->route('app.medical_records')->with('success', 'Prontuário médico criado com sucesso!');
+    //     // } else {
+    //     //     return redirect()->route('app.medical_records')->with('error', 'Ocorreu um erro ao criar o prontuário médico. Por favor, tente novamente.');
+    //     // }
+    // }
+
     public function store(Request $request)
-    {
-        $request->validate([
-            'patient_id' => 'required|exists:patients,id',
-            'healthcare_professional_id' => 'required|exists:healthcare_professionals,id',
-            'chief_complaint' => 'nullable|string',
-            'history_of_present_illness' => 'nullable|string',
-            'past_medical_history' => 'nullable|string',
-            'family_history' => 'nullable|string',
-            'physical_examination' => 'nullable|string',
-            'diagnosis' => 'nullable|string',
-            'treatment_plan' => 'nullable|string',
-            'medications' => 'nullable|string',
-            'follow_up_instructions' => 'nullable|string',
-            'file' => 'required|file|mimes:pdf,jpeg,png',
-        ]);
+{
+    $request->validate([
+        'patient_id' => 'required|exists:patients,id',
+        'healthcare_professional_id' => 'required|exists:healthcare_professionals,id',
+        'file_path' => 'required|image',
+        'complaints' => 'nullable|string',
+        'disease_history' => 'nullable|string',
+        'allergies' => 'nullable|string',
+        'diagnosis' => 'nullable|string',
+        'follow_up_instructions' => 'nullable|string',
+    ]);
 
-        // Lógica para armazenar o prontuário médico no banco de dados
-        $medicalRecord = new MedicalRecord();
-        $medicalRecord->patient_id = $request->patient_id;
-        $medicalRecord->healthcare_professional_id = $request->healthcare_professional_id;
-        $medicalRecord->chief_complaint = $request->chief_complaint;
-        $medicalRecord->history_of_present_illness = $request->history_of_present_illness;
-        $medicalRecord->past_medical_history = $request->past_medical_history;
-        $medicalRecord->family_history = $request->family_history;
-        $medicalRecord->physical_examination = $request->physical_examination;
-        $medicalRecord->diagnosis = $request->diagnosis;
-        $medicalRecord->treatment_plan = $request->treatment_plan;
-        $medicalRecord->medications = $request->medications;
-        $medicalRecord->follow_up_instructions = $request->follow_up_instructions;
-        $medicalRecord->save();
-
-        return redirect()->route('app.medical_records')->with('success', 'Prontuário médico criado com sucesso!');
+    $medicalRecord = new MedicalRecord();
+    $medicalRecord->patient_id = $request->patient_id;
+    $medicalRecord->healthcare_professional_id = $request->healthcare_professional_id;
+    $medicalRecord->complaints = $request->complaints;
+    $medicalRecord->disease_history = $request->disease_history;
+    $medicalRecord->allergies = $request->allergies;
+    $medicalRecord->diagnosis = $request->diagnosis;
+    $medicalRecord->follow_up_instructions = $request->follow_up_instructions;
+    
+    if( $request->hasFile('file_path') && $request->file('file_path')->isValid() ){
+        $currentDate = date('Y/m');
+        $imageName = $request->file_path->getClientOriginalName();
+        $request->file_path->storeAs('public/medical_records/' . $currentDate, $imageName);
+        $medicalRecord->file_path = $currentDate . '/' . $imageName;
     }
+
+    $result = $medicalRecord->save();
+
+    if ( $result ) {
+        return redirect()->route('app.medical_records')->with('success', 'Prontuário médico criado com sucesso!');
+    } else {
+        return redirect()->route('app.medical_records')->with('error', 'Ocorreu um erro ao criar o prontuário médico. Por favor, tente novamente.');
+    }
+}
+
+    
 
     public function edit($id)
     {
