@@ -18,9 +18,11 @@ class AppController extends Controller
         return view('app.admin', ['title' => 'Admin']);
     }
 
-    public function users(){
+    public function users(Request $request){
 
-        $users = User::paginate($this->perPage);
+        $users = User::where('name', 'LIKE', "%{$request->search}%")
+             ->orWhere('email', 'LIKE', "%{$request->search}%")
+             ->paginate($this->perPage);
         
         return view('app.users', ['title' => 'Usuários', 'users' => $users] );
     }
@@ -32,18 +34,32 @@ class AppController extends Controller
         return view('app.profile', ['title' => 'Perfil', 'user' => $user]);
     }
 
-    public function patient(){
-        $patients = Patient::paginate($this->perPage);
+    public function patient(Request $request){
+        $patients = Patient::where('name', 'LIKE', "%{$request->search}%")
+             ->orWhere('cpf', 'LIKE', "%{$request->search}%")
+             ->orWhere('sus_card', 'LIKE', "%{$request->search}%")
+             ->orWhere('birth_date', 'LIKE', "%{$request->search}%")
+             ->paginate($this->perPage);
+
         return view('app.patient', ['title' => 'Pacientes', 'patients' => $patients]);
     }
 
-    public function healthcareProfessionType() {
-        $types = HealthcareProfessionType::paginate($this->perPage);
+    public function healthcareProfessionType(Request $request) {
+        $types = HealthcareProfessionType::where('name', 'LIKE', "%{$request->search}%")
+             ->orWhere('council_type', 'LIKE', "%{$request->search}%")
+             ->paginate($this->perPage);
+
         return view('app.healthcare_profession_type', ['title' => 'Tipos de profissionais', 'types' => $types]);
     }
 
-    public function healthcareProfessionals(){ 
-        $professionals =  HealthcareProfessional::paginate($this->perPage);
+    public function healthcareProfessionals(Request $request){ 
+        $professionals = HealthcareProfessional::where('name', 'LIKE', "%{$request->search}%")
+             ->orWhere('document_number', 'LIKE', "%{$request->search}%")
+             ->orWhereHas('professionType', function ($query) use ($request) {
+                 $query->where('name', 'LIKE', "%{$request->search}%");
+             })
+             ->paginate($this->perPage);
+
         return view('app.professional', ['title' => 'Profissionais', 'professionals' => $professionals]);
     }
 
