@@ -18,10 +18,8 @@ return new class extends Migration
             $table->string('action');
             $table->string('model');
             $table->integer('model_id');
-            $table->ip_address('ip_address');
-            $table->integer('user_id')->nullable();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->timestamp('timestamp');
+            $table->ipAddress('ip_address');
+            $table->foreignId('user_id')->constrained();
             $table->text('details')->nullable();
             $table->string('result')->nullable();
             $table->timestamps();
