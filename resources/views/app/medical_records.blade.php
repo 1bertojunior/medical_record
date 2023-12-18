@@ -71,6 +71,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $medicalRecords->links('pagination::bootstrap-4') }}
                 </div>
             </div>
         </div>
