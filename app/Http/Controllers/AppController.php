@@ -12,13 +12,15 @@ use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
 {
+    public $perPage = 10;
+
     public function admin(){
         return view('app.admin', ['title' => 'Admin']);
     }
 
     public function users(){
 
-        $users = User::all();
+        $users = User::paginate($this->perPage);
         
         return view('app.users', ['title' => 'Usuários', 'users' => $users] );
     }
@@ -31,23 +33,23 @@ class AppController extends Controller
     }
 
     public function patient(){
-        $patients = Patient::all();
+        $patients = Patient::paginate($this->perPage);
         return view('app.patient', ['title' => 'Pacientes', 'patients' => $patients]);
     }
 
     public function healthcareProfessionType() {
-        $types = HealthcareProfessionType::all();
+        $types = HealthcareProfessionType::paginate($this->perPage);
         return view('app.healthcare_profession_type', ['title' => 'Tipos de profissionais', 'types' => $types]);
     }
 
     public function healthcareProfessionals(){ 
-        $professionals =  HealthcareProfessional::all();
+        $professionals =  HealthcareProfessional::paginate($this->perPage);
         return view('app.professional', ['title' => 'Profissionais', 'professionals' => $professionals]);
     }
 
     public function medicalRecords()
     {
-        $medicalRecords = MedicalRecord::all();
+        $medicalRecords = MedicalRecord::paginate($this->perPage);
         return view('app.medical_records', ['title' => 'Prontuários Médicos', 'medicalRecords' => $medicalRecords]);
     }
 
