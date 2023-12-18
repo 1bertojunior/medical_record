@@ -1,0 +1,14 @@
+.pagination > li > a {
+    color: #333333; 
+    background-color: #f8f9fa; 
+    border: 1px solid #dee2e6; 
+}
+.pagination > .page-item.active > .page-link {
+    background-color: #333333;
+    border: 1px solid #dee2e6; 
+    color: #F8F8F8;
+}
+.pagination > li > a:hover {
+    color: #F8F8F8;
+    background-color: #333333;
+}
