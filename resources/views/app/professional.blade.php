@@ -12,13 +12,24 @@
 
     <div class="main-conteudo">
         <div class="row">
-            <div class="col-6">
+            <div class="col-4">
                 <div class="conteudo-titulo-main">
                     <h2>{{ $title }}</h2>
                 </div>
             </div>
 
-            <div class="col-6 d-flex justify-content-end">
+            <div class="col-4">
+                <form class="input-group" action="{{ route('app.healthcare_professionals') }}" method="GET">
+                    <input type="text" class="form-control" placeholder="Pesquisar" name="search">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="col-4 d-flex justify-content-end">
                 <a href="{{ route('app.healthcare_professionals.add') }}"> <i class="fas fa-plus"></i> Adicionar</a>
             </div>
         </div>
