@@ -47,9 +47,11 @@ class AppController extends Controller
         return view('app.professional', ['title' => 'Profissionais', 'professionals' => $professionals]);
     }
 
-    public function medicalRecords()
+    public function medicalRecords(Request $request)
     {
-        $medicalRecords = MedicalRecord::paginate($this->perPage);
+        $medicalRecords = MedicalRecord::whereHas('patient', function ($query) use ($request) {
+            $query->where('name', 'LIKE', "%{$request->search}%");
+        })->paginate($this->perPage);
         return view('app.medical_records', ['title' => 'Prontuários Médicos', 'medicalRecords' => $medicalRecords]);
     }
 
