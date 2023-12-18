@@ -13,7 +13,7 @@ class AccessLog extends Model
         'action',
         'model',
         'model_id',
-        'ip_origin',
+        'ip_address',
         'user_id',
         'timestamp',
         'details',
@@ -22,7 +22,7 @@ class AccessLog extends Model
 
     public function affectedModel()
     {
-        return $this->model::find($this->model_id);
+        return $this->belongsTo($this->model, 'model_id');
     }
 
 }
