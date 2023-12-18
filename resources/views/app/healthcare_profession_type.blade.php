@@ -65,7 +65,8 @@
                             </tr>
                         @endforeach
                     </tbody>
-                </table>
+                </table>            
+                {{ $types->links('pagination::bootstrap-4') }}
                 </div>
 
             </div>
