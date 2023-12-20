@@ -81,4 +81,16 @@ class PatientController extends Controller
             return redirect()->route('app.patient')->withErrors(['error' => 'Error ao editar paciente, tente novamente mais tarde!']);
         }
     }
+
+    public function details($id)
+    {
+        try {
+            $patient = Patient::findOrFail($id);
+            return response()->json($patient);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json(['error' => 'Paciente não encontrado'], 404);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Erro desconhecido'], 500);
+        }
+    }
 }

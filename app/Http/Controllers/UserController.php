@@ -62,4 +62,15 @@ class UserController extends Controller
         }
     }
 
+    public function details($id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            return response()->json($user);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json(['error' => 'Usuário não encontrado'], 404);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Erro desconhecido'], 500);
+        }
+    }
 }

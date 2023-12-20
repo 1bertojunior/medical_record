@@ -59,4 +59,16 @@ class HealthcareProfessionTypeController extends Controller
             return redirect()->route('app.healthcare_profession_type')->withErrors(['error' => 'Error ao editar Tipo de Profissional, tente novamente mais tarde!']);
         }
     }
+
+    public function details($id)
+    {
+    try {
+        $healthcareProfessionType = HealthcareProfessionType::findOrFail($id);
+        return response()->json($healthcareProfessionType);
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        return response()->json(['error' => 'Tipo de profissão de saúde não encontrado'], 404);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Erro desconhecido'], 500);
+    }
+    }
 }
