@@ -20,10 +20,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(data => {
                     modalBody.innerHTML = ''; // Limpa o modalBody
                     var keys = Object.keys(data);
-                    for (var i = 0; i < keys.length - 2; i++) {
+                    for (var i = 0; i < keys.length ; i++) {
                         var key = keys[i];
+                        
                         if (data[key] !== null) { // Verifica se o valor não é null
-                            modalBody.innerHTML += '<p>' + key.charAt(0).toUpperCase() + key.slice(1) + ': ' + data[key] + '</p>';
+                            modalBody.innerHTML += '<div class="row"><div class="col-sm-3"><p class="mb-0">' + key.charAt(0).toUpperCase() + key.slice(1) + '</p></div><div class="col-sm-9"><p class="text-muted mb-0">' + data[key] + '</p></div></div>';
+                            if (i < keys.length - 1) { // Verifica se não é a última linha
+                                modalBody.innerHTML += '<hr>';
+                            }
                         }
                     }
                 })
