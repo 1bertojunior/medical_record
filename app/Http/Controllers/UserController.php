@@ -66,7 +66,12 @@ class UserController extends Controller
     {
         try {
             $user = User::findOrFail($id);
-            return response()->json($user);
+            return response()->json(
+                [
+                    'Nome' => $user->name,
+                    'E-mail' => $user->email,
+                ]
+            );
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['error' => 'Usuário não encontrado'], 404);
         } catch (\Exception $e) {

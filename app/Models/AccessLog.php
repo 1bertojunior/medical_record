@@ -19,6 +19,12 @@ class AccessLog extends Model
         'result',
     ];
 
+    public function getModelName()
+    {
+        $parts = explode('\\', $this->model);
+        return end($parts);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

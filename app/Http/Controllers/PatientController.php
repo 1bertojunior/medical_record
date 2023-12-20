@@ -86,7 +86,17 @@ class PatientController extends Controller
     {
         try {
             $patient = Patient::findOrFail($id);
-            return response()->json($patient);
+            
+            return response()->json(
+                [
+                    'Nome' => $patient->name,
+                    'Data de Nascimento' => $patient->formatted_birth_date,
+                    'CPF' => $patient->formatted_cpf,
+                    'Telefone' => $patient->formatted_phone,
+                    'Cartão SUS' => $patient->formatted_sus_card,
+                    'Observações' => $patient->notes,
+                ]
+            );
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['error' => 'Paciente não encontrado'], 404);
         } catch (\Exception $e) {

@@ -104,7 +104,20 @@ class MedicalRecordController extends Controller
     {
         try {
             $medicalRecord = MedicalRecord::with('healthcareProfessional')->findOrFail($id);
-            return response()->json($medicalRecord);
+            return response()->json([
+                'Nome do Profissional' => $medicalRecord->healthcareProfessional->name . ' (' . $medicalRecord->healthcareProfessional->professionType->name . ')',
+                'Nome do Paciente' => $medicalRecord->patient->name,
+                'Caminho da Imagem' => $medicalRecord->image_path,
+                'Queixa Principal' => $medicalRecord->chief_complaint,
+                'História da Doença Atual' => $medicalRecord->history_of_present_illness,
+                'Histórico Médico Passado' => $medicalRecord->past_medical_history,
+                'Histórico Familiar' => $medicalRecord->family_history,
+                'Exame Físico' => $medicalRecord->physical_examination,
+                'Diagnóstico' => $medicalRecord->diagnosis,
+                'Plano de Tratamento' => $medicalRecord->treatment_plan,
+                'Medicações' => $medicalRecord->medications,
+                'Instruções' => $medicalRecord->follow_up_instructions,            
+            ]);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['error' => 'Registro médico não encontrado'], 404);
         } catch (\Exception $e) {

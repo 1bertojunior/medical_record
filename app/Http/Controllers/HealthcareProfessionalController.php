@@ -80,7 +80,11 @@ class HealthcareProfessionalController extends Controller
     {
         try {
             $healthcareProfessional = HealthcareProfessional::with('professionType')->findOrFail($id);
-            return response()->json($healthcareProfessional);
+            return response()->json([
+                'Nome' => $healthcareProfessional->name,
+                'Tipo de Profissão' => $healthcareProfessional->professionType->name,
+                'Registro do Conselho' => $healthcareProfessional->document_number . ' (' . $healthcareProfessional->professionType->council_type . ')',
+            ]);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['error' => 'Profissional de saúde não encontrado'], 404);
         } catch (\Exception $e) {
