@@ -55,4 +55,7 @@ Route::middleware('authentication')->prefix('/app')->group(function() {
     Route::put('/medical-records/edit/{id}', [MedicalRecordController::class, 'update'])->name('app.medical_records.edit');
     Route::delete('/medical-records/delete/{id}', [MedicalRecordController::class, 'destroy'])->name('app.medical_records.delete');
 
+    // Access Logs
+    Route::get('/logs-access', [AppController::class, 'logsAccess'])->name('app.logs_access');
+
 });
