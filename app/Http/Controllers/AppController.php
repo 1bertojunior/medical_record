@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AccessLog;
 use App\Models\HealthcareProfessional;
 use App\Models\HealthcareProfessionType;
 use App\Models\MedicalRecord;
@@ -69,6 +70,12 @@ class AppController extends Controller
             $query->where('name', 'LIKE', "%{$request->search}%");
         })->paginate($this->perPage);
         return view('app.medical_records', ['title' => 'Prontuários Médicos', 'medicalRecords' => $medicalRecords]);
+    }
+
+    public function logsAccess(Request $request){
+        $logs = AccessLog::where('action', 'LIKE', "%{$request->search}%")
+        ->paginate($this->perPage);
+        return view('app.logs_access', ['title' => 'Logs Acessos', 'logs' => $logs]);
     }
 
 }

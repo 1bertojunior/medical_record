@@ -41,6 +41,10 @@
                 <i class="fas fa-notes-medical"></i>
                 <a href="{{ route('app.medical_records') }}">Prontuários</a>
             </li>
+            <li class="{{ request()->routeIs(['app.logs_access']) ? 'selecionado' : '' }}"> 
+                <i class="fas fa-clipboard-list"></i>
+                <a href="{{ route('app.logs_access') }}">Logs</a>
+            </li>
         </ul>
     </div>
 

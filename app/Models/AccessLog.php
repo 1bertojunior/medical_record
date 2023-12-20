@@ -15,10 +15,14 @@ class AccessLog extends Model
         'model_id',
         'ip_address',
         'user_id',
-        'timestamp',
         'details',
         'result',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function affectedModel()
     {
