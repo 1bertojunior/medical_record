@@ -78,7 +78,7 @@
                                 <td>{{ date('d/m/Y', strtotime($patient->birth_date)) }}</td>
                                 <td>{{ substr($patient->notes, 0, 50) }}</td>
                                 <td>
-                                    <a href="#modal" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#viewModal" data-id="{{ $patient->id }}" data-type="patient"><i class="fas fa-eye"></i></a>
                                     <a href="{{ route('app.patient.edit', ['id' => $patient->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                     <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>
@@ -95,5 +95,7 @@
     </div>
 
 </main>
+
+@include('app.layouts._partials.modal')
 
 @endsection

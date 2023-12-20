@@ -71,6 +71,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>
+                                        <a href="#" class="btn btn-info" data-toggle="modal" data-target="#viewModal" data-id="{{ $user->id }}" data-type="users"><i class="fas fa-eye"></i></a>
                                         <a href="{{ route('app.users.edit', ['id' => $user->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                         <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                     </td>
@@ -86,5 +87,7 @@
     </div>
 
 </main>
+
+@include('app.layouts._partials.modal')
 
 @endsection

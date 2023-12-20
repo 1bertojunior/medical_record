@@ -59,8 +59,8 @@
                         <th scope="col">Nome</th>
                         <th scope="col">IP</th>
                         <th scope="col">Usuário</th>
-                        {{-- <th scope="col">Detalhes</th> --}}
                         <th scope="col">Status</th>
+                        <th scope="col">Ação</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -72,8 +72,10 @@
                                 <td>{{ $log->affectedModel->name }}</td>
                                 <td>{{ $log->ip_address }}</td>
                                 <td>{{ $log->user->name }}</td>
-                                {{-- <td>{{ substr($log->details, 0, 50) }}</td> --}}
-                                <td>{{ $log->result }}</td>                                                   
+                                <td>{{ $log->result }}</td> 
+                                <td>
+                                    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#viewModal" data-id="{{ $log->id }}" data-type="logs-access"><i class="fas fa-eye"></i></a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -87,5 +89,7 @@
     </div>
 
 </main>
+
+@include('app.layouts._partials.modal')
 
 @endsection

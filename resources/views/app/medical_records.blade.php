@@ -74,7 +74,7 @@
                                     <td>{{ substr($record->disease_history, 0, 50) }}</td>
                                     <td>{{ substr($record->diagnosis, 0, 50) }}</td>
                                     <td>
-                                        <a href="#modal" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                        <a href="#" class="btn btn-info" data-toggle="modal" data-target="#viewModal" data-id="{{ $record->id }}" data-type="medical-records"><i class="fas fa-eye"></i></a>
                                         <a href="{{ route('app.medical_records.edit', ['id' => $record->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                         <a href="#delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>                                        
                                     </td>
@@ -91,5 +91,6 @@
 
 </main>
 
+@include('app.layouts._partials.modal')
 
 @endsection

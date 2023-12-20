@@ -69,6 +69,7 @@
                                     <td>{{ $professional->document_number }}</td>
                                     <td>{{ $professional->professionType->council_type }}</td>
                                     <td>
+                                        <a href="#" class="btn btn-info" data-toggle="modal" data-target="#viewModal" data-id="{{ $professional->id }}" data-type="healthcare_professionals"><i class="fas fa-eye"></i></a>
                                         <a href="{{ route('app.healthcare_professionals.edit', ['id' => $professional->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                         <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                     </td>
@@ -83,5 +84,7 @@
 
     </div>
 </main>
+
+@include('app.layouts._partials.modal')
 
 @endsection
