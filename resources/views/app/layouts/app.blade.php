@@ -14,10 +14,12 @@
     <div class="flex-dashboard">
         @yield('content')
     </div>
-
+    
+    <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('fontawesome/js/all.min.js') }}"></script>
     <script src="{{ asset('js/menu.js') }}"></script>
+    <script src="{{ asset('js/modal-details.js') }}"></script>
 
 </body>
 </html>
