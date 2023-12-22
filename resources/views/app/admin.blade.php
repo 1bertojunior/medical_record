@@ -20,35 +20,38 @@
             <div class="dashboard-flex">
                 <div class="dashboard-box">
                     <div class="dashboard-box-wrapper">
-                        <div class="box-icons box-peso"><i class="fas fa-weight"></i></div>
-                        <div class="valor">XXX</div>
-                        <div class="tipo">XX</div>
+                        <div class="box-icons box-peso"><i class="fas fa-user"></i></div>
+                        <div class="valor">{{ $data['totalUsers'] }}</div>
+                        <div class="tipo">Usuários</div>
                     </div>
                 </div>
                 <div class="dashboard-box">
                     <div class="dashboard-box-wrapper">
-                        <div class="box-icons box-pressao"><i class="fas fa-heartbeat"></i></i></div>
-                        <div class="valor">XXX</div>
-                        <div class="tipo">XXX</div>
+                        <div class="box-icons box-pressao"><i class="fas fa-procedures"></i></div>
+                        <div class="valor">{{ $data['totalPatients'] }}</div>
+                        <div class="tipo">Pacientes</div>
                     </div>
                 </div>
                 <div class="dashboard-box">
                     <div class="dashboard-box-wrapper">
-                        <div class="box-icons box-imc"><i class="fas fa-calculator"></i></div>
-                        <div class="valor">XXX</div>
-                        <div class="tipo">XXX</div>
+                        <div class="box-icons box-imc"><i class="fas fa-stethoscope"></i></div>
+                        <div class="valor">{{ $data['totalProfessionTypes'] }}</div>
+                        <div class="tipo">Tipos de Profissionais</div>
                     </div>
                 </div>
                 <div class="dashboard-box">
                     <div class="dashboard-box-wrapper">
-                        <div class="box-icons box-atividade"><i class="fas fa-biking"></i></div>
-                        <div class="valor">XXX</div>
-                        <div class="tipo">XXX</div>
+                        <div class="box-icons box-atividade"><i class="fas fa-user-md"></i></div>
+                        <div class="valor">{{ $data['totalProfessionals'] }}</div>
+                        <div class="tipo">Profissionais</div>
                     </div>
-
                 </div>
             </div>
+            
+
         </div>
+
+        
 
     </div>
 

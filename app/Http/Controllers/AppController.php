@@ -16,7 +16,22 @@ class AppController extends Controller
     public $perPage = 10;
 
     public function admin(){
-        return view('app.admin', ['title' => 'Admin']);
+
+        $totalUsers = User::count();
+        $totalPatients = Patient::count();
+        $totalProfessionTypes = HealthcareProfessionType::count();
+        $totalProfessionals = HealthcareProfessional::count();
+        $totalMedicalRecords = MedicalRecord::count();
+        $totalAccessLogs = AccessLog::count();
+        
+        return view('app.admin', ['title' => 'Admin', 'data' => [
+            'totalUsers' => $totalUsers,
+            'totalPatients' => $totalPatients,
+            'totalProfessionTypes' => $totalProfessionTypes,
+            'totalProfessionals' => $totalProfessionals,
+            'totalMedicalRecords' => $totalMedicalRecords,
+            'totalAccessLogs' => $totalAccessLogs,
+        ]]);
     }
 
     public function users(Request $request){
