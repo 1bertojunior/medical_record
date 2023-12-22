@@ -26,7 +26,7 @@ class MedicalRecordController extends Controller
         $request->validate([
             'patient_id' => 'required|exists:patients,id',
             'healthcare_professional_id' => 'required|exists:healthcare_professionals,id',
-            'file_path' => 'required|image',
+            'file_path' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
             'complaints' => 'nullable|string',
             'disease_history' => 'nullable|string',
             'allergies' => 'nullable|string',
@@ -34,25 +34,29 @@ class MedicalRecordController extends Controller
             'follow_up_instructions' => 'nullable|string',
         ]);
 
-        $medicalRecord = new MedicalRecord();
-        $medicalRecord->patient_id = $request->patient_id;
-        $medicalRecord->healthcare_professional_id = $request->healthcare_professional_id;
-        $medicalRecord->complaints = $request->complaints;
-        $medicalRecord->disease_history = $request->disease_history;
-        $medicalRecord->allergies = $request->allergies;
-        $medicalRecord->diagnosis = $request->diagnosis;
-        $medicalRecord->follow_up_instructions = $request->follow_up_instructions;
-        
         if( $request->hasFile('file_path') && $request->file('file_path')->isValid() ){
             $currentDate = date('Y/m');
-            $imageName = $request->file_path->getClientOriginalName();
-            $request->file_path->storeAs('public/medical_records/' . $currentDate, $imageName);
-            $medicalRecord->file_path = $currentDate . '/' . $imageName;
+            $originalName = pathinfo($request->file_path->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $request->file_path->getClientOriginalExtension();
+            $fileName = $originalName . '_' . uniqid() . '.' . $extension;
+            $request->file_path->storeAs('public/medical_records/' . $currentDate, $fileName);
+            $filePath = 'storage/medical_records/' . $currentDate . '/' . $fileName;
+            $request->request->remove('file_path');
         }
+    
 
-        $result = $medicalRecord->save();
+        $medicalRecord = MedicalRecord::create([
+            'patient_id' => $request->get('patient_id'),
+            'healthcare_professional_id' => $request->get('healthcare_professional_id'),
+            'file_path' => $filePath ,
+            'complaints' => $request->get('complaints'),
+            'disease_history' => $request->get('disease_history'),
+            'allergies' => $request->get('allergies'),
+            'diagnosis' => $request->get('diagnosis'),
+            'follow_up_instructions' => $request->get('follow_up_instructions'),
+        ]);
 
-        if ( $result ) {
+        if ( $medicalRecord ) {
             return redirect()->route('app.medical_records')->with('success', 'Prontuário médico criado com sucesso!');
         } else {
             return redirect()->route('app.medical_records')->with('error', 'Ocorreu um erro ao criar o prontuário médico. Por favor, tente novamente.');
@@ -104,19 +108,16 @@ class MedicalRecordController extends Controller
     {
         try {
             $medicalRecord = MedicalRecord::with('healthcareProfessional')->findOrFail($id);
+            
             return response()->json([
-                'Nome do Profissional' => $medicalRecord->healthcareProfessional->name . ' (' . $medicalRecord->healthcareProfessional->professionType->name . ')',
+                'Nome do Profissional' => $medicalRecord->healthcareProfessional->name,
                 'Nome do Paciente' => $medicalRecord->patient->name,
-                'Caminho da Imagem' => $medicalRecord->image_path,
-                'Queixa Principal' => $medicalRecord->chief_complaint,
-                'História da Doença Atual' => $medicalRecord->history_of_present_illness,
-                'Histórico Médico Passado' => $medicalRecord->past_medical_history,
-                'Histórico Familiar' => $medicalRecord->family_history,
-                'Exame Físico' => $medicalRecord->physical_examination,
+                'file' => $medicalRecord->file_path,
+                'Queixa' => $medicalRecord->complaints,
+                'História da Doença' => $medicalRecord->disease_history,
+                'Alergias' => $medicalRecord->allergies,
                 'Diagnóstico' => $medicalRecord->diagnosis,
-                'Plano de Tratamento' => $medicalRecord->treatment_plan,
-                'Medicações' => $medicalRecord->medications,
-                'Instruções' => $medicalRecord->follow_up_instructions,            
+                'Instruções de Acompanhamento' => $medicalRecord->follow_up_instructions,
             ]);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['error' => 'Registro médico não encontrado'], 404);
