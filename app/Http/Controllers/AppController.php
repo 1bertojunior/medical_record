@@ -23,16 +23,42 @@ class AppController extends Controller
         $totalProfessionals = HealthcareProfessional::count();
         $totalMedicalRecords = MedicalRecord::count();
         $totalAccessLogs = AccessLog::count();
-        
+    
+        // Estatísticas para o dashboard
+        $statistics = [
+            [
+                'iconClass' => 'box-peso',
+                'icon' => 'fa-user',
+                'value' => $totalUsers,
+                'label' => 'Usuários',
+            ],
+            [
+                'iconClass' => 'box-pressao',
+                'icon' => 'fa-procedures',
+                'value' => $totalPatients,
+                'label' => 'Pacientes',
+            ],
+            [
+                'iconClass' => 'box-imc',
+                'icon' => 'fa-stethoscope',
+                'value' => $totalProfessionTypes,
+                'label' => 'Tipos de Profissionais',
+            ],
+            [
+                'iconClass' => 'box-atividade',
+                'icon' => 'fa-user-md',
+                'value' => $totalProfessionals,
+                'label' => 'Profissionais',
+            ],
+        ];
+    
         return view('app.admin', ['title' => 'Admin', 'data' => [
-            'totalUsers' => $totalUsers,
-            'totalPatients' => $totalPatients,
-            'totalProfessionTypes' => $totalProfessionTypes,
-            'totalProfessionals' => $totalProfessionals,
+            'statistics' => $statistics,
             'totalMedicalRecords' => $totalMedicalRecords,
             'totalAccessLogs' => $totalAccessLogs,
         ]]);
     }
+    
 
     public function users(Request $request){
 
