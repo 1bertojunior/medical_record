@@ -29,7 +29,7 @@ trait LogsAccess
             'model' => get_class($model),
             'model_id' => $model->id,
             'ip_address' => request()->ip(),
-            'user_id' => auth()->id(),
+            'user_id' => auth()->id() ?? 1,
             'details' => json_encode(request()->all()),
             'result' => 'success',
         ]);
