@@ -11,7 +11,12 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
-        // Adiciona um usuário de exemplo
+        
+        DB::table('users')->insert([
+            'name' => 'Admin',
+            'email' => 'admin@amigosdacomunidade.org',
+            'password' => Hash::make('Amigos@2016'),
+        ]);
         DB::table('users')->insert([
             'name' => 'Humberto',
             'email' => 'hjunior854@gmail.com',

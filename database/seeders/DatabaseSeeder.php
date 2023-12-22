@@ -17,8 +17,5 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call(UsersTableSeeder::class);
         $this->call(HealthcareProfessionTypesTableSeeder::class);
-        $this->call(HealthcareProfessionalsTableSeeder::class);
-        $this->call(PatientsTableSeeder::class);
-        $this->call(MedicalRecordsSeeder::class);
     }
 }
