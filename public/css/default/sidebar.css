@@ -37,7 +37,7 @@ div .menu ul{
     background-color: #333333;    
 }
 div .menu ul li{
-    padding: 20px 20px;
+    padding: 18px 20px;
     width: 100%;
     display: flex;
     flex-direction: row;
