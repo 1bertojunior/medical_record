@@ -61,6 +61,7 @@
                                 <th scope="col">Queixa</th>
                                 <th scope="col">Histórico</th>
                                 <th scope="col">Diagnóstico</th>
+                                <th scope="col">Arquivo</th>
                                 <th scope="col">Ações</th>
                             </tr>
                         </thead>
@@ -73,6 +74,13 @@
                                     <td>{{ substr($record->complaints, 0, 50) }}</td>
                                     <td>{{ substr($record->disease_history, 0, 50) }}</td>
                                     <td>{{ substr($record->diagnosis, 0, 50) }}</td>
+                                    <td>
+                                        @if($record->file_path)
+                                            <i class="{{ pathinfo($record->file_path, PATHINFO_EXTENSION) == 'pdf' ? 'fas fa-file-pdf' : 'fas fa-image' }}"></i>
+                                        @else
+                                            <i class="fas fa-exclamation-circle"></i>
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="#" class="btn btn-info" data-toggle="modal" data-target="#viewModal" data-id="{{ $record->id }}" data-type="medical-records"><i class="fas fa-eye"></i></a>
                                         <a href="{{ route('app.medical_records.edit', ['id' => $record->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
