@@ -75,25 +75,45 @@ class MedicalRecordController extends Controller
 
     public function update(Request $request)
     {
-        $request->validate([
+        $rules = [
             'patient_id' => 'required|exists:patients,id',
             'healthcare_professional_id' => 'required|exists:healthcare_professionals,id',
-            'chief_complaint' => 'nullable|string',
-            'history_of_present_illness' => 'nullable|string',
-            'past_medical_history' => 'nullable|string',
-            'family_history' => 'nullable|string',
-            'physical_examination' => 'nullable|string',
+            'file_path' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+            'complaints' => 'nullable|string',
+            'disease_history' => 'nullable|string',
+            'allergies' => 'nullable|string',
             'diagnosis' => 'nullable|string',
-            'treatment_plan' => 'nullable|string',
-            'medications' => 'nullable|string',
             'follow_up_instructions' => 'nullable|string',
-            'file' => 'required|file|mimes:pdf,jpeg,png',
-        ]);
+        ];
+        
+        // Filtra o request para incluir apenas os campos não nulos
+        $data = array_filter($request->only(array_keys($rules)), function ($value) {
+            return $value !== null;
+        });
 
         $medicalRecord = MedicalRecord::findOrFail($request->id);
-        $medicalRecord->update($request->all());
 
-        return redirect()->route('app.medical_records')->with('success', 'Prontuário médico atualizado com sucesso!');
+        if($medicalRecord){
+            if( $request->hasFile('file_path') && $request->file('file_path')->isValid() ){
+                $currentDate = date('Y/m');
+                $originalName = pathinfo($request->file_path->getClientOriginalName(), PATHINFO_FILENAME);
+                $extension = $request->file_path->getClientOriginalExtension();
+                $fileName = $originalName . '_' . uniqid() . '.' . $extension;
+                $request->file_path->storeAs('public/medical_records/' . $currentDate, $fileName);
+                $filePath = 'storage/medical_records/' . $currentDate . '/' . $fileName;
+                $request->request->remove('file_path');                
+                $data['file_path'] = $filePath;
+            }
+
+            $result = $medicalRecord->update($data);
+        
+            if( $result ){
+                return redirect()->route('app.medical_records')->with('success', 'Prontuário médico atualizado com sucesso!');;
+            }else{
+                return redirect()->route('app.medical_records')->withErrors(['error' => 'Error ao atualizar prontuário médico, tente novamente!']);
+            }
+        }
+
     }
 
     public function destroy($id)
