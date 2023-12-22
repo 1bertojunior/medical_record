@@ -4,7 +4,6 @@
     align-items: center;
     justify-content: space-between;
     height: 90px;
-    /* background: linear-gradient(135deg, rgb(245, 220, 248), rgb(194, 194, 231)); */
     background-color: #ECF0F1;
     padding: 10px 30px;
     border: 1px solid rgb(0, 0, 0, .0625);
@@ -25,4 +24,20 @@
 .flex-dashboard .fa-bars{
     font-size: 22px;
     cursor: pointer;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    display: none; 
+}
+@media (max-width: 768px) {
+    .logo {
+        display: block; 
+        height: 50px;
+        width: 50px;
+    }
 }

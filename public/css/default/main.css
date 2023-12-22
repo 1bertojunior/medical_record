@@ -1,10 +1,27 @@
+body::-webkit-scrollbar-track
+{
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;    
+    background-color: #333333;
+}
+
+
 main{
     display: block;
     height: 100%;
-    /* background: linear-gradient(135deg, rgb(245, 220, 248), rgb(194, 194, 231)); */
     background-color: #f8f8f8;
-    width: calc(100% - 300px);
-    
+    width: 100%;
 }
 
 main .main-conteudo{

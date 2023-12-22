@@ -1,25 +1,16 @@
-let iconMenu = document.getElementById('icon-menu')
-let sidebar = document.getElementById('sidebar')
-let tamanhoTela = window.innerWidth //retorna o largura da tela do navegador
-let conteudoMain = document.getElementById('main-conteudo-total')
-
-window.addEventListener("resize", () => {
-    tamanhoTela = window.innerWidth
-   
-})  //adicionando um evento a janela - ao objeto window
-
-function barraLateralResponsive(){ 
-    if ( tamanhoTela <= 991 ){
-        alert('ola mundo')
+function barraLateralResponsive() {
+    var sidebar = document.getElementById("sidebar");
+    var main = document.getElementById("main-conteudo-total");
+    if (sidebar.classList.contains("mostrar")) {
+        sidebar.classList.remove("mostrar");
+        main.classList.remove("com-margem");
+    } else {
+        sidebar.classList.add("mostrar");
+        main.classList.add("com-margem");
     }
-    else{
-       if(sidebar.style.display == 'none'){ //menu escondido
-        sidebar.style.display = 'block'
-        conteudoMain.style.width = 'calc(100% - 300px)'
-       }
-       else{ //menu a mostra - esconde o display 
-        sidebar.style.display = 'none'
-        conteudoMain.style.width = '100%'
-       }
+
+    if (window.innerWidth >= 768) {
+        sidebar.classList.remove("com-margem");
+        main.classList.remove("mostrar");
     }
 }

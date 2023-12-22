@@ -3,12 +3,11 @@
     flex-direction: row;
     height: 100%;
     width: 100%;
-
 }
 sidebar{
     display: block;
     height: 100%;
-    width: 300px;
+    width: 380px;
     background-color: #333333;
 }
 sidebar .sidebar-titulo {
@@ -35,7 +34,7 @@ div .menu ul li{
 }
 div .menu ul{
     list-style-type: none;
-    
+    background-color: #333333;    
 }
 div .menu ul li{
     padding: 20px 20px;
@@ -68,4 +67,32 @@ div .menu ul li a:hover{
 
 .selecionado svg {
     color: #333333 !important;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        width: 250px; /* Largura da sua barra lateral */
+        position: fixed;
+        left: -250px; /* Esconde a barra lateral */
+        transition: left 0.3s ease; /* Animação suave */
+        z-index: 2; /* Faz a barra lateral aparecer sobre o conteúdo da página */
+    }
+    #sidebar.mostrar {
+        left: 0; /* Mostra a barra lateral */
+    }
+    #icon-menu {
+        display: block;
+    }
+    #main-conteudo-total {
+        transition: margin-left 0.3s ease; /* Animação suave */
+    }
+    #main-conteudo-total.com-margem {
+        margin-left: 250px; /* Adiciona margem à esquerda quando a barra lateral é exibida */
+    }
+}
+
+@media (min-width: 768px) {
+    #main-conteudo-total.com-margem {
+        margin-left: -380px;
+    }
 }
