@@ -4,13 +4,12 @@
 
 @section('content')
 
-{{-- Welcome to page admin --}}
-
 @include('app.layouts._partials.sidebar')
 
 <main id="main-conteudo-total">
 
     @include('app.layouts._partials.header')
+    
 
     <div class="main-conteudo">
         <div class="conteudo-titulo-main">
