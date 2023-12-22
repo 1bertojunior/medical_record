@@ -13,17 +13,13 @@ class MedicalRecord extends Model
     protected $fillable = [
         'patient_id',
         'healthcare_professional_id',
-        'image_path',
-        'chief_complaint',
-        'history_of_present_illness',
-        'past_medical_history',
-        'family_history',
-        'physical_examination',
+        'file_path',
+        'complaints',
+        'disease_history',
+        'allergies',
         'diagnosis',
-        'treatment_plan',
-        'medications',
         'follow_up_instructions',
-    ];
+    ];    
 
     // Relacionamento com o modelo Patient
     public function patient()
